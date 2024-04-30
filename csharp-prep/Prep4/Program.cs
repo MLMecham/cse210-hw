@@ -27,7 +27,6 @@ class Program
         List<int> numbersML = new List<int>();
         string userInputML;
         int intUserInputML;
-        string continueML = "";
         int sumML;
         float averageNumberML;
         int biggestNumberML = -10000000;
