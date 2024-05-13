@@ -20,10 +20,13 @@ class Program
         job2._startYear = 2011;
         job2._endYear = 2023;
 
-        Resume resume = new Resume();
+        Resume resume = new();
         resume._name = "Gregory Summers";
         resume._jobList.Add(job1);
         resume._jobList.Add(job2);
+
+        
+        
         
         
         resume.DisplayResume();
