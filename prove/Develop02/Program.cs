@@ -47,7 +47,8 @@ class Program
                 }
                 else if (ownPromptYN == "no" || ownPromptYN == "n")
                 {
-                    // make own prompt
+                    JournalEntry entry = JournalEntry.WriteOwnPromptEntry();
+                    Journal.AddEntryToJournal(entry);
                 }
                 } while (!responses.Contains(ownPromptYN));
 
@@ -61,12 +62,37 @@ class Program
 
             else if (decision == "3")
             {
-                Console.WriteLine("3");
+                // Console.WriteLine("3");
+                string filename = "journal.txt";
+                string[] savedJournal = System.IO.File.ReadAllLines(filename);
+
+                // JournalEntry loadJournal = new();
+
+                foreach (string line in savedJournal)
+                {
+                    JournalEntry loadJournal = new();
+                    string[] parts = line.Split("|");
+
+                    loadJournal._date = parts[0];
+                    loadJournal._prompt = parts[1];
+                    loadJournal._entry = parts[2];
+
+                    Journal.currentJournal.Add(loadJournal);
+                }
             }
 
             else if (decision == "4")
             {
-                Console.WriteLine("4");
+                Console.WriteLine("Save");
+                string filename = "journal.txt";
+
+                using (StreamWriter outputFile = new StreamWriter(filename))
+                {foreach (JournalEntry entry in Journal.currentJournal)
+                    {
+                    string line = entry._date + '|' +  entry._prompt + '|' + entry._entry;
+                    outputFile.WriteLine($"{line}");
+                    }
+                }
             }
 
             else if (decision == "5")
