@@ -8,18 +8,15 @@ class Program
 
         // Define all of the basic variables here
         string newLine = Environment.NewLine;
-
-        Console.WriteLine("Wecome to the Journal Program!");
-        // Console.WriteLine("Hello Develop02 World!");
-
-
-
-        // Define basic variables for the program
         string decision;
+        JournalEntry entry1 = new();
+        Journal journal1 = new();
         List<string> responses = new List<string> { "yes", "y", "no", "n" };
         string ownPromptYN;
 
-
+        Console.WriteLine("Wecome to the Journal Program!");
+        // Console.WriteLine("Hello Develop02 World!");
+        
         do
         {
             // Display the menu options
@@ -42,13 +39,13 @@ class Program
                 ownPromptYN = ownPromptYN.ToLower();
                 if (ownPromptYN == "yes" || ownPromptYN == "y")
                 {
-                    JournalEntry entry = JournalEntry.WriteEntry();
-                    Journal.AddEntryToJournal(entry);
+                    entry1 = entry1.WriteEntry();
+                    journal1.AddEntryToJournal(entry1);
                 }
                 else if (ownPromptYN == "no" || ownPromptYN == "n")
                 {
-                    JournalEntry entry = JournalEntry.WriteOwnPromptEntry();
-                    Journal.AddEntryToJournal(entry);
+                    entry1 = entry1.WriteOwnPromptEntry();
+                    journal1.AddEntryToJournal(entry1);
                 }
                 } while (!responses.Contains(ownPromptYN));
 
@@ -57,13 +54,17 @@ class Program
 
             else if (decision == "2")
             {
-                Journal.DisplayJournal();
+                journal1.DisplayJournal();
             }
 
             else if (decision == "3")
             {
                 // Console.WriteLine("3");
-                string filename = "journal.txt";
+                journal1 = new();
+                Console.WriteLine(newLine);
+                Console.WriteLine("Loading existing journal");
+                Console.WriteLine("Please enter the name of the file. ie 'journal.txt'");
+                string filename = Console.ReadLine();
                 string[] savedJournal = System.IO.File.ReadAllLines(filename);
 
                 // JournalEntry loadJournal = new();
@@ -77,17 +78,19 @@ class Program
                     loadJournal._prompt = parts[1];
                     loadJournal._entry = parts[2];
 
-                    Journal.currentJournal.Add(loadJournal);
+                    journal1.currentJournal.Add(loadJournal);
                 }
             }
 
             else if (decision == "4")
-            {
-                Console.WriteLine("Save");
-                string filename = "journal.txt";
+            {   
+                Console.WriteLine(newLine);
+                Console.WriteLine("Saving Current Journal:");
+                Console.WriteLine("Please type in a file name to save the journal. ie 'journal.txt': ");
+                string filename = Console.ReadLine();
 
                 using (StreamWriter outputFile = new StreamWriter(filename))
-                {foreach (JournalEntry entry in Journal.currentJournal)
+                {foreach (JournalEntry entry in journal1.currentJournal)
                     {
                     string line = entry._date + '|' +  entry._prompt + '|' + entry._entry;
                     outputFile.WriteLine($"{line}");
