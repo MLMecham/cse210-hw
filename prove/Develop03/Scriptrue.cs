@@ -47,7 +47,8 @@ public class Scripture
     public void ReturnHiddenWord()
     {
 
-        _verseList.Insert(_randomIndex, _randomWord);
+        // _verseList.Insert(_randomIndex, _randomWord);
+        _verseList[_randomIndex] = _randomWord;
         
     }
 
