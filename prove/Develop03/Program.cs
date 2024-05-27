@@ -14,6 +14,10 @@ class Program
         Reference referecne1 = new Reference("1 Nephi", 3, 7, 7);
         Word word1 = new Word();
         string currentWord;
+        bool wordHidden;
+
+        int wordCount = 0;
+        int wordAlreadyHidden = 0;
 
         // Show the initial full scripture and reference
         Console.WriteLine("Try to memorize this scripture!");
@@ -27,43 +31,49 @@ class Program
         Console.WriteLine(Environment.NewLine);
 
         // This will be the loop that checks for continue or quit
-        do
+        
+        while ((enterKey != "quit") && (wordAlreadyHidden <= 2000))
         {
             
-            int word_count = 0;
+            
 
             // This will be the loop that counts changes in the words
-            do
-                {
-                    scripture1.SetRandom();
+            wordAlreadyHidden = 0;
+            while ((wordCount < 3) && (wordAlreadyHidden <= 2000))    
+            {
+                scripture1.SetRandom();
                 
 
                 currentWord = scripture1.GetRandomWord();
                 word1.SetWord(currentWord);
                 
+                // Check if the word is already hidden and then choose path
+                wordHidden = word1.GetIsHidden();
+                if (wordHidden == false)
+                {
+                    // Hide the word
+                    word1.HideWord();
+                    currentWord = word1.GetWord();
+                        
 
-                // Hide the word
-                word1.HideWord();
-                currentWord = word1.GetWord();
-                
+                    // Return the word to the verse
+                    scripture1.SetRandomWord(currentWord);
+                    scripture1.ReturnHiddenWord();
+                    scripture1.SetVerse();
+                    wordCount = wordCount + 1;
+                    // scriputre1.DisplayList();
+                }
 
-                // Return the word to the verse
-                scripture1.SetRandomWord(currentWord);
-                scripture1.ReturnHiddenWord();
-                scripture1.SetVerse();
-
-
-
-
-                
-                
-                word_count = word_count + 1;
-                // scriputre1.DisplayList();
-            } while (word_count < 3);
+                else
+                {
+                    wordAlreadyHidden = wordAlreadyHidden + 1;
+                }
+            } 
 
             // Display the scripture again to memorize.
             referecne1.Display();
             scripture1.Dispaly();
+            wordCount = 0;
 
             Console.WriteLine(Environment.NewLine);
             Console.Write("Press Enter to remove three words or type 'quit' to exit the program.     ");
@@ -71,9 +81,16 @@ class Program
             
 
 
-        } while (enterKey != "quit");
+        } 
 
 
+        
+
+        Console.WriteLine("All of the words are hidden or you chose to quit. Hit enter to see if you can repeat the scripture");
+        Console.ReadLine();
+
+        referecne1.Display();
+        scripture1.Dispaly();
 
 
 

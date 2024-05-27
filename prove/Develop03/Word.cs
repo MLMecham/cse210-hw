@@ -32,11 +32,17 @@ public class Word
         if (_word == string.Concat(Enumerable.Repeat("_", _word.Length)))
         {
             _isHidden = true;
+            // Console.WriteLine("the word is already hidden");
         }
         else 
         {
             _isHidden = false;
         }
+    }
+
+    public bool GetIsHidden()
+    {
+        return _isHidden;
     }
 
 
