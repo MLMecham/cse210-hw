@@ -1,11 +1,11 @@
 public class Scripture
 {
 
-    public string _verse;
-    public List<string> _verseList;
+    private string _verse;
+    private List<string> _verseList;
 
-    public int _randomIndex;
-    public string _randomWord;
+    private int _randomIndex;
+    private string _randomWord;
 
     public Scripture(string verse)
     {

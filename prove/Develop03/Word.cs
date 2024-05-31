@@ -2,9 +2,9 @@ using System.Net;
 
 public class Word
 {
-    string _word;
-    bool _isHidden;
-    int _count;
+    private string _word;
+    private bool _isHidden;
+    private int _count;
 
     public Word()
     {

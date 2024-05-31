@@ -129,7 +129,7 @@ class Program
 
         referecne1.Display();
         scripture1.Dispaly();
-
+        Console.WriteLine(Environment.NewLine);
 
 
     }
