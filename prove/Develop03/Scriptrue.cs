@@ -44,12 +44,22 @@ public class Scripture
         _randomWord = word;
         
     }
+
+    public int GetRandomIndex()
+    {
+        return _randomIndex;
+    }
     public void ReturnHiddenWord()
     {
 
         // _verseList.Insert(_randomIndex, _randomWord);
         _verseList[_randomIndex] = _randomWord;
         
+    }
+
+    public void UndoHiddenWord(string word, int index)
+    {
+        _verseList[index] = word;
     }
 
     public void Dispaly()
