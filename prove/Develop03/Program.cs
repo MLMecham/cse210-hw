@@ -112,7 +112,7 @@ class Program
             wordCount = 0;
 
             Console.WriteLine(Environment.NewLine);
-            Console.Write("Press Enter to remove three words or type 'quit' to exit the program.     ");
+            Console.Write("Press Enter to remove three words or type 'quit' to exit the program. Type 'b' to unhide a word     ");
             enterKey = Console.ReadLine();
             
 
@@ -120,7 +120,9 @@ class Program
         } 
 
 
-        
+        Console.WriteLine(Environment.NewLine);
+        Console.WriteLine(Environment.NewLine);
+        Console.WriteLine(Environment.NewLine);
 
         Console.WriteLine("All of the words are hidden or you chose to quit. Hit enter to see if you can repeat the scripture");
         Console.ReadLine();
