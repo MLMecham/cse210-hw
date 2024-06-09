@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 class Program
 {
@@ -6,4 +7,6 @@ class Program
     {
         Console.WriteLine("Hello Learning05 World!");
     }
+
+    
 }
