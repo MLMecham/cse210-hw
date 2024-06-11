@@ -29,6 +29,8 @@ class Reflect : Activity
         int randint;
         while (startTime < futureTime)
         {
+            Console.WriteLine("");
+
             randint = rand.Next(0, _questionList.Count());
             Console.WriteLine(_questionList[randint]);
             Animation();

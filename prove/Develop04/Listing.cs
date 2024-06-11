@@ -25,7 +25,7 @@ class Listing : Activity
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
 
-        Console.WriteLine("\nBegin listing");
+        Console.WriteLine("\nBegin listing\n");
         string response;
         while (startTime < futureTime)
         {
@@ -39,6 +39,6 @@ class Listing : Activity
 
     public void DisplayResponseCount()
     {
-        Console.WriteLine(_responseList.Count());
+        Console.WriteLine($"You listed {_responseList.Count()} things.");
     }
 }
