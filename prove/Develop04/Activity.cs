@@ -10,10 +10,10 @@ public class Activity
 
 
 
-    public Activity(string startMessage, string activiyDescriptor, string endMessage)
+    public Activity(string startMessage, string activityDescriptor, string endMessage)
     {
         _startMessage = startMessage;
-        _activityDescriptor = activiyDescriptor;
+        _activityDescriptor = activityDescriptor;
         _endMessage = endMessage;
     }
 

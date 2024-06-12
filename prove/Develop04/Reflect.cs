@@ -3,7 +3,7 @@ class Reflect : Activity
     List<string> _promptList;
     List<string> _questionList;
 
-    public Reflect(string startMessage, string activiyDescriptor, string endMessage, List<string> promptList, List<string> questionList) : base(startMessage, activiyDescriptor, endMessage)
+    public Reflect(string startMessage, string activityDescriptor, string endMessage, List<string> promptList, List<string> questionList) : base(startMessage, activityDescriptor, endMessage)
     {
         _promptList = promptList;
         _questionList = questionList;

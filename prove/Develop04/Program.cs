@@ -16,11 +16,58 @@ class Program
         };
         List<string> reflectTopic = new()
         {
-            "Think of a time when you stood up for someone else"
+            "Think of a time when you stood up for someone else",
+            "Think of a time when you did something really difficult",
+            "Think of a time when you did something truly selfless."
         };
         List<string> reflectQuestions = new()
         {
-            "Why was this experience meaningful to you?"
+            "Why was this experience meaningful to you?",
+            "Have you ever done anything like this before?",
+            "How did you get started?",
+            "What could you learn from this experience that applies to other situations?",
+            "What did you learn about yourself through this experience?",
+            "How can you keep this experience in mind in the future?"
+        };
+        List<string> animationList = new()
+        {
+@"   
+    (o_o)
+      |
+     /|\
+    / | \
+     / \
+     | |
+     
+ ",
+ @"
+     (o_o)
+       |
+   __ /|\__
+       | 
+      / \
+      | |
+ 
+",
+ @"
+   \ (o_o) /
+    \  |  /
+      -|-
+       | 
+      / \
+      | |
+ 
+",
+ @"
+    |(o_o)|
+     \ | /
+      \|/
+       | 
+      / \
+      | |
+ 
+"
+
         };
 
         // Define  main variables
@@ -139,12 +186,28 @@ class Program
 
 
             // show the end message
+            Console.WriteLine("");
             reflecting.DisplayEndMessage();
         }
 
         else if (intChoice == 4)
         {
-            Console.WriteLine("Stretching");
+            Stretch stretching = new("Taking time to practice mindfulness has many benefits. We hope that this exercise helps you relax.", "This exersize will help you stretch. First an animation will show you a streching pose.\nThen, all you need to do is mimic the stretch and feel great.\nA bell sound will alert you when the time is over.", "You did great! We hope that you feel refreshed and ready to face the day with a new vigor.", animationList);
+            stretching.DisplayStartMessage();
+            stretching.DisplayActivityDescriptor();
+
+            Console.Write("\nPlease enter the duration of the activity: ");
+            integer = int.Parse(Console.ReadLine());
+            stretching.SetDuration(integer);
+
+            
+            Console.Write("\nPlease stand up and follow the instuctions shown below\nA bell will chime when it's time to stop stretching.\nPress Enter to continue: ");
+            Console.ReadLine();
+            stretching.Animation();
+
+            stretching.DisplayStretch();
+
+            stretching.DisplayEndMessage();
         }
 
         else 

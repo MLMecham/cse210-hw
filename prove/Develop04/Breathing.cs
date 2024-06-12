@@ -1,6 +1,6 @@
 class Breathing : Activity
 {
-    public Breathing(string startMessage, string activiyDescriptor, string endMessage) : base(startMessage, activiyDescriptor, endMessage)
+    public Breathing(string startMessage, string activityDescriptor, string endMessage) : base(startMessage, activityDescriptor, endMessage)
     {
 
     }
@@ -33,7 +33,14 @@ class Breathing : Activity
             Thread.Sleep(1000);
             Console.WriteLine("6");
             Thread.Sleep(1000);
+
+            startTime = DateTime.Now;
             
+            if (futureTime < startTime) 
+            {
+                break;
+            }
+
             Console.WriteLine("");
             Console.WriteLine("Breath out for 6...");
             Console.WriteLine("1");
