@@ -19,7 +19,8 @@ class Reflect : Activity
     public void RefletingActivity()
     {
         
-        Console.WriteLine("After reading the prompt, other questions will appear one after the other. Please reflect until the time runs out.");
+        Console.Write("After reading the prompt, other questions will appear one after the other. Please press enter to begin: ");
+        Console.ReadLine();
         Animation();
         Console.WriteLine("");
         DateTime startTime = DateTime.Now;

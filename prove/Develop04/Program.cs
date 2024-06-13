@@ -106,7 +106,7 @@ class Program
 
         if (intChoice == 1)
         {
-            Breathing breathing = new("Taking time to practice mindfulness has many benefits. We hope that this exercise helps you relax.", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.", "You did great! We hope that you feel refreshed and ready to face the day with a new vigor.");
+            Breathing breathing = new("Taking time to practice mindfulness has many benefits. We hope that this exercise helps you relax.", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.", "You did great! We hope that you feel refreshed and ready to face the day with a new vigor.");
 
             // show the starting messages
             breathing.DisplayStartMessage();
@@ -212,7 +212,7 @@ class Program
 
         else 
         {
-            Console.WriteLine("Thank you for coming. Come back soon.");
+            Console.WriteLine("Thank you for coming. See you soon.");
         }
 
 
