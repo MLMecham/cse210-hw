@@ -22,6 +22,7 @@ public class ContinuousGoal : Goal
 
         if (answer.ToLower() == "y")
         {
+            _totalCompletions += 1;
             Console.WriteLine("Congradulations for completing your goal.");
             Console.WriteLine($"You have earned {_pointsPerCompletion} points!");
             Console.WriteLine("We hope you continue to complete this goal!");
@@ -39,6 +40,6 @@ public class ContinuousGoal : Goal
     }
     public override void DisplayGoal()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"[ ] {_name} ({_description})");
     }
 }

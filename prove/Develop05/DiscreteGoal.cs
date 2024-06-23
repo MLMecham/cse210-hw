@@ -25,31 +25,47 @@ public class DiscreteGoal : Goal
     }
     public override void UpdateGoal()
     {
-        Console.WriteLine(_description);
-        Console.WriteLine("Have you completed this goal?");
-        Console.Write("(Enter Y or N):  ");
-        string answer = Console.ReadLine();
-
-        if (answer.ToLower() == "y")
+        if (_completed == false)
         {
-            _completed = true;
-            Console.WriteLine("Congradulations for completing your goal.");
-            Console.WriteLine($"You have earned {_pointsWorth} points!");
+            Console.WriteLine(_description);
+            Console.WriteLine("Have you completed this goal?");
+            Console.Write("(Enter Y or N):  ");
+            string answer = Console.ReadLine();
 
-            Console.Write("\nHit enter to continue: ");
-            Console.ReadLine();
+        
+            if (answer.ToLower() == "y")
+            {
+                _completed = true;
+                Console.WriteLine("Congradulations for completing your goal.");
+                Console.WriteLine($"You have earned {_pointsWorth} points!");
+
+                Console.Write("\nHit enter to continue: ");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Continue working hard to complete this goal.");
+
+                Console.Write("Hit enter to continue: ");
+                Console.ReadLine();
+            }
         }
         else
         {
-            Console.WriteLine("Continue working hard to complete this goal.");
-
+            Console.WriteLine("You have already completed this goal");
             Console.Write("Hit enter to continue: ");
             Console.ReadLine();
         }
     }
     public override void DisplayGoal()
     {
-        Console.WriteLine("This has yet to be formatted");
-        Console.WriteLine($"{_pointsWorth} and {_description} and {_name} and {_completed}");
+        if (_completed == true)
+        {
+            Console.WriteLine($"[X] {_name} ({_description})");
+        }
+        else
+        {
+            Console.WriteLine($"[ ] {_name} ({_description})");
+        }
     }
 }

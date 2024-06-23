@@ -24,7 +24,7 @@ public class MultiStepGoal : Goal
         }
         else
         {
-            return 0;
+            return _pointsPerStep * _progressNumber;
         }
     }
     public override void UpdateGoal()
@@ -39,7 +39,7 @@ public class MultiStepGoal : Goal
             
             _progressNumber++;
             Console.WriteLine("Congradulations for making progress on your goal!.");
-            Console.WriteLine($"You have earned {_pointsPerCompletion} points!");
+            Console.WriteLine($"You have earned {_pointsPerStep} points!");
 
             Console.Write("\nHit enter to continue: ");
             Console.ReadLine();
@@ -50,6 +50,9 @@ public class MultiStepGoal : Goal
                 Console.WriteLine("\nWell Done! You have reached your goal!");
                 Console.WriteLine($"For your perserverance you have earned an additional {_pointsPerCompletion} points!");
                 Console.WriteLine("You may continue to complete this goal for more points, but there won't be another bonus.");
+
+                Console.Write("\nHit enter to continue: ");
+                Console.ReadLine();
             }
 
         }
@@ -63,6 +66,13 @@ public class MultiStepGoal : Goal
     }
     public override void DisplayGoal()
     {
-        throw new NotImplementedException();
+        if (_completed == true)
+        {
+            Console.WriteLine($"[X] {_name} ({_description})");
+        }
+        else
+        {
+            Console.WriteLine($"[ ] {_name} ({_description}) -- Currently Completed: {_progressNumber}/{_targetNumber}");
+        }
     }
 }
