@@ -1,5 +1,6 @@
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 public class DiscreteGoal : Goal
 {
@@ -67,5 +68,12 @@ public class DiscreteGoal : Goal
         {
             Console.WriteLine($"[ ] {_name} ({_description})");
         }
+
+    
+    }
+
+    public override string ToString()
+    {
+        return String.Join(",", "1", _completed, _pointsWorth, _name, _description);
     }
 }

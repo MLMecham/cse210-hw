@@ -75,4 +75,9 @@ public class MultiStepGoal : Goal
             Console.WriteLine($"[ ] {_name} ({_description}) -- Currently Completed: {_progressNumber}/{_targetNumber}");
         }
     }
+
+    public override string ToString()
+    {
+        return String.Join(",", "3", _completed, _pointsPerStep, _pointsPerCompletion, _targetNumber, _progressNumber, _name, _description);
+    }
 }

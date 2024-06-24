@@ -42,4 +42,9 @@ public class ContinuousGoal : Goal
     {
         Console.WriteLine($"[ ] {_name} ({_description})");
     }
+
+    public override string ToString()
+    {
+        return String.Join(",", "2", _pointsPerCompletion, _totalCompletions, _name, _description);
+    }
 }

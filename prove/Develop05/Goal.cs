@@ -19,4 +19,5 @@ public abstract class Goal
     public abstract void DisplayGoal();
     public abstract void UpdateGoal();
     public abstract int CalculateScore();
+    public abstract override string ToString();
 }
