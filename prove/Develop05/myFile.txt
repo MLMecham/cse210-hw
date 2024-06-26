@@ -1,6 +1,9 @@
+4,False,50,don't die,Your life must not end
+4,False,1000,oh no,the world is ending
 1,True,100,do homework,complete all assignments for the week
 2,50,0,read scriptures,enhance gospel knowledge by reading scriptures
 3,True,50,100,2,2,Protein Power,eat chicken 2 times
 3,False,10,50,5,2,hello,say hello
 2,50,1,wake up,don't sleep in too much
 2,100,1,eat healthy,make healthy food for lunch
+1,True,500,take out the trash,take the tash out before it stinks

@@ -21,6 +21,8 @@ class Program
         // goalList.Add(cg1);
         // MultiStepGoal mg1 = new (false, 50, 100, 2, 0, "Protein Power", "eat chicken 2 times");
         // goalList.Add(mg1);
+        BadDiscreteGoal bg1 = new(false, 50, "don't die", "Your life must not end");
+        goalList.Add(bg1);
 
 
         while (answer != "6")
@@ -33,6 +35,7 @@ class Program
                 Console.WriteLine("\t1. Discrete Goal");
                 Console.WriteLine("\t2. Continuous Goal");
                 Console.WriteLine("\t3. Multi-Step Goal");
+                Console.WriteLine("\t4. Bad Discrete Goal");
 
                 Console.Write("Select a choice from the menu: ");
                 answer = Console.ReadLine();
@@ -87,6 +90,21 @@ class Program
                     goalList.Add(new MultiStepGoal(false, intPoints, intBonus, intTarget, 0, name, description));
 
                 }
+                else if (answer == "4")
+                {
+                    Console.Write("Enter goal name: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter goal description: ");
+                    string description = Console.ReadLine();
+                    Console.Write("How many points earned by completion: ");
+                    string points = Console.ReadLine();
+                    int intPoints = int.Parse(points);
+
+                    goalList.Add(new BadDiscreteGoal(false, intPoints, name, description));
+
+
+
+                }
 
 
             }
@@ -108,114 +126,122 @@ class Program
             else if (answer == "3")
             {   
                 // Save
-                List<string> saveList = new();
-                foreach (Goal goal in goalList)
-                {
-                    saveList.Add(goal.ToString());
-                }
-                string stringGoals = String.Join("\n", saveList);
+                // List<string> saveList = new();
+                // foreach (Goal goal in goalList)
+                // {
+                //     saveList.Add(goal.ToString());
+                // }
+                // string stringGoals = String.Join("\n", saveList);
 
                 
-                string fileName = "myFile.txt";
-                using (StreamWriter outputFile = new StreamWriter(fileName))
-                {
-                    outputFile.WriteLine($"{stringGoals}");
-                }
+                // string fileName = "myFile.txt";
+                // using (StreamWriter outputFile = new StreamWriter(fileName))
+                // {
+                //     outputFile.WriteLine($"{stringGoals}");
+                // }
 
 
-                Console.WriteLine("Saving Successful\nPress enter to continue: ");
-                Console.ReadLine();
-            }
+                // Console.WriteLine("Saving Successful\nPress enter to continue: ");
+                // Console.ReadLine();
+                SaveLoad save = new();
+                save.SaveGoals(goalList);
+}
             else if (answer == "4")
             {
                 // This is how I will formal the info from the txt doc.
-                string filename = "myFile.txt";
-                string[] lines = System.IO.File.ReadAllLines(filename);
-                foreach (string line in lines)
-                {
-                    Console.WriteLine("here-1");
-                    string[] parts = line.Split(',');
-                    List<string> loadList = new List<string>(parts);
-                        if (loadList[0].ToString() == "1")
-                        {
-                            Console.WriteLine("here");
-                            bool boolean;
+                // string filename = "myFile.txt";
+                // string[] lines = System.IO.File.ReadAllLines(filename);
+                // foreach (string line in lines)
+                // {
+                //     Console.WriteLine("here-1");
+                //     string[] parts = line.Split(',');
+                //     List<string> loadList = new List<string>(parts);
+                //         if (loadList[0].ToString() == "1")
+                //         {
+                //             Console.WriteLine("here");
+                //             bool boolean;
 
-                            if (loadList[1].ToString() == "True" || loadList[1].ToString() == "true")
-                            {
-                                boolean = true;
-                                Console.WriteLine("here2");
-                            }
-                            else
-                            {
-                                boolean = false;
-                                Console.WriteLine("here2");
-                            }
-                            int loadPoints = int.Parse(loadList[2].ToString());
-                            Console.WriteLine("print3");
-                            string loadName = loadList[3].ToString();
-                            Console.WriteLine("print4");
-                            string loadDescription = loadList[4].ToString();
-                            Console.WriteLine("print5");
-                            goalList.Add(new DiscreteGoal(boolean, loadPoints, loadName, loadDescription));
-                            foreach (Goal thing in goalList)
-                            {
-                                thing.DisplayGoal();
-                            }
-                        }
-                        else if (loadList[0].ToString() == "2")
-                        {
-                            Console.WriteLine("here");
+                //             if (loadList[1].ToString() == "True" || loadList[1].ToString() == "true")
+                //             {
+                //                 boolean = true;
+                //                 Console.WriteLine("here2");
+                //             }
+                //             else
+                //             {
+                //                 boolean = false;
+                //                 Console.WriteLine("here2");
+                //             }
+                //             int loadPoints = int.Parse(loadList[2].ToString());
+                //             Console.WriteLine("print3");
+                //             string loadName = loadList[3].ToString();
+                //             Console.WriteLine("print4");
+                //             string loadDescription = loadList[4].ToString();
+                //             Console.WriteLine("print5");
+                //             goalList.Add(new DiscreteGoal(boolean, loadPoints, loadName, loadDescription));
+                //             foreach (Goal thing in goalList)
+                //             {
+                //                 thing.DisplayGoal();
+                //             }
+                //         }
+                //         else if (loadList[0].ToString() == "2")
+                //         {
+                //             Console.WriteLine("here");
                             
-                            int loadPoints = int.Parse(loadList[1].ToString());
-                            Console.WriteLine("print2");
-                            int loadCompleted = int.Parse(loadList[2]);
-                            Console.WriteLine("print3");
-                            string loadName = loadList[3].ToString();
-                            Console.WriteLine("print4");
-                            string loadDescription = loadList[4].ToString();
-                            Console.WriteLine("print5");
-                            goalList.Add(new ContinuousGoal(loadPoints, loadCompleted, loadName, loadDescription));
-                            foreach (Goal thing in goalList)
-                            {
-                                thing.DisplayGoal();
-                            }
-                        }
-                        else if (loadList[0].ToString() == "3")
-                        {
-                            bool boolean;
-                            if (loadList[1].ToString() == "True" || loadList[1].ToString() == "true")
-                            {
-                                boolean = true;
-                                Console.WriteLine("here2");
-                            }
-                            else
-                            {
-                                boolean = false;
-                                Console.WriteLine("here2");
-                            }
-                            int loadPointsPerStep = int.Parse(loadList[2].ToString());
-                            Console.WriteLine("print3");
-                            int loadPointsPerCompletion = int.Parse(loadList[3].ToString());
-                            Console.WriteLine("print4");
-                            int loadTarget = int.Parse(loadList[4].ToString());
-                            Console.WriteLine("print5");
-                            int loadProgress = int.Parse(loadList[5].ToString());
-                            Console.WriteLine("print6");
-                            string loadName = loadList[6].ToString();
-                            Console.WriteLine("print7");
-                            string loadDescription = loadList[7].ToString();
-                            Console.WriteLine("print8");
-                            goalList.Add(new MultiStepGoal(boolean, loadPointsPerStep, loadPointsPerCompletion, loadTarget, loadProgress, loadName, loadDescription));
-                            foreach (Goal thing in goalList)
-                            {
-                                thing.DisplayGoal();
-                            }
-                        }
-                }
+                //             int loadPoints = int.Parse(loadList[1].ToString());
+                //             Console.WriteLine("print2");
+                //             int loadCompleted = int.Parse(loadList[2]);
+                //             Console.WriteLine("print3");
+                //             string loadName = loadList[3].ToString();
+                //             Console.WriteLine("print4");
+                //             string loadDescription = loadList[4].ToString();
+                //             Console.WriteLine("print5");
+                //             goalList.Add(new ContinuousGoal(loadPoints, loadCompleted, loadName, loadDescription));
+                //             foreach (Goal thing in goalList)
+                //             {
+                //                 thing.DisplayGoal();
+                //             }
+                //         }
+                //         else if (loadList[0].ToString() == "3")
+                //         {
+                //             bool boolean;
+                //             if (loadList[1].ToString() == "True" || loadList[1].ToString() == "true")
+                //             {
+                //                 boolean = true;
+                //                 Console.WriteLine("here2");
+                //             }
+                //             else
+                //             {
+                //                 boolean = false;
+                //                 Console.WriteLine("here2");
+                //             }
+                //             int loadPointsPerStep = int.Parse(loadList[2].ToString());
+                //             Console.WriteLine("print3");
+                //             int loadPointsPerCompletion = int.Parse(loadList[3].ToString());
+                //             Console.WriteLine("print4");
+                //             int loadTarget = int.Parse(loadList[4].ToString());
+                //             Console.WriteLine("print5");
+                //             int loadProgress = int.Parse(loadList[5].ToString());
+                //             Console.WriteLine("print6");
+                //             string loadName = loadList[6].ToString();
+                //             Console.WriteLine("print7");
+                //             string loadDescription = loadList[7].ToString();
+                //             Console.WriteLine("print8");
+                //             goalList.Add(new MultiStepGoal(boolean, loadPointsPerStep, loadPointsPerCompletion, loadTarget, loadProgress, loadName, loadDescription));
+                //             foreach (Goal thing in goalList)
+                //             {
+                //                 thing.DisplayGoal();
+                //             }
+                //         }
+                // }
                 
-                // make a condition tree looking for the 0 value and create objects using that.
                 // saving and loading should delete the current goals loaded.
+                SaveLoad load = new();
+                List<Goal> loadList = new();
+                loadList = load.LoadGoals();
+                foreach (Goal goal in loadList)
+                {
+                    goalList.Add(goal);
+                }
 
 
                 Console.WriteLine("Load Animation");
