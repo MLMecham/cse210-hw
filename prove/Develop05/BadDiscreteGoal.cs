@@ -25,7 +25,7 @@ public class BadDiscreteGoal : Goal
         if (_completed == false)
         {
             Console.WriteLine(_description);
-            Console.WriteLine("Have you completed this goal?");
+            Console.WriteLine("\nHave you completed this goal?");
             Console.Write("(Enter Y or N):  ");
             string answer = Console.ReadLine();
 
@@ -33,7 +33,8 @@ public class BadDiscreteGoal : Goal
             if (answer.ToLower() == "y")
             {
                 _completed = true;
-                Console.WriteLine("Oh no!");
+                Console.Clear();
+                Console.WriteLine("\n\n\n\nOh no!");
                 Console.WriteLine($"You lost {_pointsWorth} points!");
                 Console.WriteLine("Don't worry, the road to success is not a paved road. The way is rocky. Keep trying!");
 
@@ -41,14 +42,16 @@ public class BadDiscreteGoal : Goal
                 Console.ReadLine();
             }
             else
-            {
-                Console.WriteLine("Continue working hard to complete this goal.");
+            {   Console.Clear();
+                Console.WriteLine("\n\n\n\nWhat a relief. Continue to not complete this goal.");
                 Console.Write("Hit enter to continue: ");
                 Console.ReadLine();
             }
         }
         else
         {
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n");
             Console.WriteLine("You have already completed this goal");
             Console.Write("Hit enter to continue: ");
             Console.ReadLine();

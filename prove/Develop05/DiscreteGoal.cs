@@ -29,7 +29,7 @@ public class DiscreteGoal : Goal
         if (_completed == false)
         {
             Console.WriteLine(_description);
-            Console.WriteLine("Have you completed this goal?");
+            Console.WriteLine("\nHave you completed this goal?");
             Console.Write("(Enter Y or N):  ");
             string answer = Console.ReadLine();
 
@@ -37,6 +37,8 @@ public class DiscreteGoal : Goal
             if (answer.ToLower() == "y")
             {
                 _completed = true;
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n");
                 Console.WriteLine("Congradulations for completing your goal.");
                 Console.WriteLine($"You have earned {_pointsWorth} points!");
 
@@ -45,6 +47,8 @@ public class DiscreteGoal : Goal
             }
             else
             {
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n");
                 Console.WriteLine("Continue working hard to complete this goal.");
 
                 Console.Write("Hit enter to continue: ");
@@ -53,6 +57,8 @@ public class DiscreteGoal : Goal
         }
         else
         {
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n");
             Console.WriteLine("You have already completed this goal");
             Console.Write("Hit enter to continue: ");
             Console.ReadLine();

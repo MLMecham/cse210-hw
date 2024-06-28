@@ -6,6 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.Clear();
         Console.WriteLine("Welcome to Eternal Quest!");
         int iteration;
         int totalScore;
@@ -21,8 +22,20 @@ class Program
         // goalList.Add(cg1);
         // MultiStepGoal mg1 = new (false, 50, 100, 2, 0, "Protein Power", "eat chicken 2 times");
         // goalList.Add(mg1);
-        BadDiscreteGoal bg1 = new(false, 50, "don't die", "Your life must not end");
-        goalList.Add(bg1);
+        // BadDiscreteGoal bg1 = new(false, 50, "don't die", "Your life must not end");
+        // goalList.Add(bg1);
+
+
+            Console.WriteLine("\nMenu Options");
+            Console.WriteLine("\t1. Create New Goal");
+            Console.WriteLine("\t2. List Goals");
+            Console.WriteLine("\t3. Save Goals");
+            Console.WriteLine("\t4. Load Goals");
+            Console.WriteLine("\t5. Record Goal Progress");
+            Console.WriteLine("\t6. Quit");
+
+            Console.Write("Select a choice from the menu: ");
+            answer = Console.ReadLine();
 
 
         while (answer != "6")
@@ -31,6 +44,7 @@ class Program
 
             if (answer == "1")
             {
+                Console.Clear();
                 Console.WriteLine("\nWhich kind of goal would you like to create?");
                 Console.WriteLine("\t1. Discrete Goal");
                 Console.WriteLine("\t2. Continuous Goal");
@@ -43,7 +57,7 @@ class Program
 
                 if (answer == "1")
                 {
-                    Console.Write("Enter goal name: ");
+                    Console.Write("\nEnter goal name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter goal description: ");
                     string description = Console.ReadLine();
@@ -58,7 +72,7 @@ class Program
                 }
                 else if (answer == "2")
                 {
-                    Console.Write("Enter goal name: ");
+                    Console.Write("\nEnter goal name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter goal description: ");
                     string description = Console.ReadLine();
@@ -71,7 +85,7 @@ class Program
                 }
                 else if (answer == "3")
                 {
-                    Console.Write("Enter goal name: ");
+                    Console.Write("\nEnter goal name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter goal description: ");
                     string description = Console.ReadLine();
@@ -92,11 +106,11 @@ class Program
                 }
                 else if (answer == "4")
                 {
-                    Console.Write("Enter goal name: ");
+                    Console.Write("\nEnter goal name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter goal description: ");
                     string description = Console.ReadLine();
-                    Console.Write("How many points earned by completion: ");
+                    Console.Write("How many points lost by completion: ");
                     string points = Console.ReadLine();
                     int intPoints = int.Parse(points);
 
@@ -271,7 +285,33 @@ class Program
                     pointsEarned = goal.CalculateScore();
                     totalScore += pointsEarned;
                 }
+            Console.Clear();
             Console.WriteLine($"\nPoints: {totalScore}");
+
+            if (totalScore > 999)
+            {
+                Console.WriteLine("level: 4");
+                Console.WriteLine($"Progress to level 5: {totalScore}/{totalScore + 1} (So Close! Keep Trying!)");
+            }
+            else if (totalScore > 499)
+            {
+                Console.WriteLine("level: 3");
+            }
+            else if (totalScore > 66)
+            {
+                Console.WriteLine("level: 2");
+            }
+            else if (totalScore > 0)
+            {
+                Console.WriteLine("level: 1");
+            }
+            else if (totalScore < 0)
+            {
+                Console.WriteLine("level: :c");
+            }
+            
+            
+            
 
             Console.WriteLine("\nMenu Options");
             Console.WriteLine("\t1. Create New Goal");

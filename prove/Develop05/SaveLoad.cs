@@ -1,3 +1,4 @@
+using System.IO.Enumeration;
 using System.Runtime.CompilerServices;
 
 public class SaveLoad
@@ -6,95 +7,70 @@ public class SaveLoad
 
     public List<Goal> LoadGoals()
 {
-    string filename = "myFile.txt";
-    string[] lines = System.IO.File.ReadAllLines(filename);
+    // Choose file
+    string fileName;
+    // filename = "myFile.txt";
+
+    Console.Clear();
+    Console.WriteLine("\n");
+    Console.WriteLine("From what file should the goals be saved (ie: myFile.txt)");
+    fileName = Console.ReadLine();
+
+    string[] lines = System.IO.File.ReadAllLines(fileName);
     foreach (string line in lines)
     {
-        Console.WriteLine("here-1");
         string[] parts = line.Split(',');
         List<string> loadList = new List<string>(parts);
         if (loadList[0].ToString() == "1")
         {
-            Console.WriteLine("here");
             bool boolean = loadList[1].ToString().ToLower() == "true";
-            Console.WriteLine("here2");
 
             int loadPoints = int.Parse(loadList[2]);
-            Console.WriteLine("print3");
             string loadName = loadList[3];
-            Console.WriteLine("print4");
             string loadDescription = loadList[4];
-            Console.WriteLine("print5");
 
             _goalList.Add(new DiscreteGoal(boolean, loadPoints, loadName, loadDescription));
-            foreach (Goal thing in _goalList)
-            {
-                thing.DisplayGoal();
-            }
+
         }
         else if (loadList[0].ToString() == "2")
         {
-            Console.WriteLine("here");
 
             int loadPoints = int.Parse(loadList[1]);
-            Console.WriteLine("print2");
             int loadCompleted = int.Parse(loadList[2]);
-            Console.WriteLine("print3");
             string loadName = loadList[3];
-            Console.WriteLine("print4");
             string loadDescription = loadList[4];
-            Console.WriteLine("print5");
 
             _goalList.Add(new ContinuousGoal(loadPoints, loadCompleted, loadName, loadDescription));
-            foreach (Goal thing in _goalList)
-            {
-                thing.DisplayGoal();
-            }
+
         }
         else if (loadList[0].ToString() == "3")
         {
             bool boolean = loadList[1].ToString().ToLower() == "true";
-            Console.WriteLine("here2");
 
             int loadPointsPerStep = int.Parse(loadList[2]);
-            Console.WriteLine("print3");
             int loadPointsPerCompletion = int.Parse(loadList[3]);
-            Console.WriteLine("print4");
             int loadTarget = int.Parse(loadList[4]);
-            Console.WriteLine("print5");
             int loadProgress = int.Parse(loadList[5]);
-            Console.WriteLine("print6");
             string loadName = loadList[6];
-            Console.WriteLine("print7");
             string loadDescription = loadList[7];
-            Console.WriteLine("print8");
 
             _goalList.Add(new MultiStepGoal(boolean, loadPointsPerStep, loadPointsPerCompletion, loadTarget, loadProgress, loadName, loadDescription));
-            foreach (Goal thing in _goalList)
-            {
-                thing.DisplayGoal();
-            }
+
         }
         else if (loadList[0].ToString() == "4")
         {
-            Console.WriteLine("here");
             bool boolean = loadList[1].ToString().ToLower() == "true";
-            Console.WriteLine("here2");
 
             int loadPoints = int.Parse(loadList[2]);
-            Console.WriteLine("print3");
             string loadName = loadList[3];
-            Console.WriteLine("print4");
             string loadDescription = loadList[4];
-            Console.WriteLine("print5");
 
             _goalList.Add(new BadDiscreteGoal(boolean, loadPoints, loadName, loadDescription));
-            foreach (Goal thing in _goalList)
-            {
-                thing.DisplayGoal();
-            }
+
     }}
 
+    Console.WriteLine("\n\nLoading Successful\nPress enter to continue: ");
+    Console.ReadLine();
     return _goalList;
 }
 
@@ -108,15 +84,21 @@ public class SaveLoad
                 }
                 string stringGoals = String.Join("\n", saveList);
 
+                // Choose file
+                string fileName;
+                // fileName = "myFile.txt";
+                Console.Clear();
+                Console.WriteLine("\n");
+                Console.WriteLine("To what file should the goals be saved (ie: myFile.txt)");
+                fileName = Console.ReadLine();
                 
-                string fileName = "myFile.txt";
                 using (StreamWriter outputFile = new StreamWriter(fileName))
                 {
                     outputFile.WriteLine($"{stringGoals}");
                 }
 
 
-                Console.WriteLine("Saving Successful\nPress enter to continue: ");
+                Console.WriteLine("\n\nSaving Successful\nPress enter to continue: ");
                 Console.ReadLine();
     }
 }

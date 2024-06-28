@@ -30,7 +30,7 @@ public class MultiStepGoal : Goal
     public override void UpdateGoal()
     {
         Console.WriteLine(_description);
-        Console.WriteLine("Have you completed this goal?");
+        Console.WriteLine("\nHave you completed this goal?");
         Console.Write("(Enter Y or N):  ");
         string answer = Console.ReadLine();
 
@@ -38,6 +38,8 @@ public class MultiStepGoal : Goal
         {
             
             _progressNumber++;
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n");
             Console.WriteLine("Congradulations for making progress on your goal!.");
             Console.WriteLine($"You have earned {_pointsPerStep} points!");
 
@@ -58,6 +60,8 @@ public class MultiStepGoal : Goal
         }
         else
         {
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n");
             Console.WriteLine("Continue working hard to complete this goal.");
 
             Console.Write("Hit enter to continue: ");
