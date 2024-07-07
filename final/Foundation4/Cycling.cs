@@ -11,7 +11,7 @@ public class Cycling : Activity
     public override void GetSummary()
     {
         Console.Write($"{GetDate()}");
-        Console.Write($" Running");
+        Console.Write($" Cycling");
         Console.Write($" ({_duration} min)-");
         Console.Write($"Distance {CalculateDistance()} miles,");
         Console.Write($" Speed {_speed} mph,");
