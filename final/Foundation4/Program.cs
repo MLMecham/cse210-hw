@@ -3,9 +3,9 @@ using System;
 class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Hello Foundation4 World!");
-
+    {   
+        Console.Clear();
+        // Console.WriteLine("Hello Foundation4 World!");
         List<Activity> activities = new();
 
         Running running1 = new(5.0, 60, 2024, 7, 6);
@@ -21,9 +21,11 @@ class Program
 
         // Console.WriteLine(swimming1.CalculateDistance());
 
+        Console.WriteLine("Person A's Stats:\n");
         foreach (Activity activity in activities)
         {
             activity.GetSummary();
         }
+        Console.WriteLine("\n");
     }
 }

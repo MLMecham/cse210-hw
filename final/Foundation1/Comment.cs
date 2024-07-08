@@ -13,6 +13,13 @@ class Comment
         _postDate = new(year, month, day);
     }
 
+    public Comment(string name, string commentText)
+    {
+        _name = name;
+        _commentText = commentText;
+        _postDate = DateTime.Today;
+    }
+
     public string CalculateCommentAge()
     {
    
@@ -25,7 +32,7 @@ class Comment
     public void DisplayComment()
     {
         Console.WriteLine();
-        Console.WriteLine($"Name: {_name}\nComment: {_commentText}");
+        Console.WriteLine($"Author: {_name}\nComment: {_commentText}");
         Console.WriteLine(CalculateCommentAge());
     }
 
