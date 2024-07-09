@@ -13,15 +13,21 @@ public class Event
         _dateTime = new(year, month, day, hour, minute, 0);
     }
 
-    public void DisplayDateTime()
+    public string DisplayDateTime()
     {
-        Console.Write(_dateTime.ToString("MMMM dd, yyyy"));
-        Console.Write(" at ");
-        Console.WriteLine(_dateTime.ToString("hh:mm tt"));
+        // Console.Write(_dateTime.ToString("MMMM dd, yyyy"));
+        // Console.Write(" at ");
+        // Console.WriteLine(_dateTime.ToString("hh:mm tt"));
+
+        return _dateTime.ToString("MMMM dd, yyyy") + " at " + _dateTime.ToString("hh:mm tt");
     }
     public void DisplayStandardDetials()
     {
-        Console.WriteLine($"{_eventTitle}\n{_description}\n{_address.GetAddressInfo()}");
-    }
+        int labelWidth = 25; 
+
+        Console.WriteLine($"{"Event:".PadRight(labelWidth)} {_eventTitle}");
+        Console.WriteLine($"{"What:".PadRight(labelWidth)} {_description}");
+        Console.WriteLine($"{"Where:".PadRight(labelWidth)} {_address.GetAddressInfo()}");
+        Console.WriteLine($"{"When:".PadRight(labelWidth)} {DisplayDateTime()}");    }
 
 }

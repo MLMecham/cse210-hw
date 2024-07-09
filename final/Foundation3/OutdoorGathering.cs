@@ -11,10 +11,19 @@ public class OutdoorGathering : Event
 
     public void DisplayFullDetails()
     {
+        int labelWidth = 25;
 
-    }
+        Console.WriteLine($"{"Outdoor Gathering:".PadRight(labelWidth)} {_eventTitle}");
+        Console.WriteLine($"{"What:".PadRight(labelWidth)} {_description}");
+        Console.WriteLine($"{"Forecast:".PadRight(labelWidth)} {_forcast}");
+        Console.WriteLine($"{"Please Bring:".PadRight(labelWidth)} {_itemToBring}");
+        Console.WriteLine($"{"Where:".PadRight(labelWidth)} {_address.GetAddressInfo()}");
+        Console.WriteLine($"{"When:".PadRight(labelWidth)} {DisplayDateTime()}");
+            }
     public void DisplayShortDetails()
     {
-        
-    }
+        int labelWidth = 25; 
+
+        Console.WriteLine($"{"Lecture:".PadRight(labelWidth)} {_eventTitle}");
+        Console.WriteLine($"{"When:".PadRight(labelWidth)} {DisplayDateTime()}");    }
 }

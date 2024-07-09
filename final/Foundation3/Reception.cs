@@ -13,10 +13,20 @@ public class Reception : Event
 
     public void DisplayFullDetails()
     {
-
-    }
+        int labelWidth = 25;
+        Console.WriteLine($"{"Event Title:".PadRight(labelWidth)} {_eventTitle}");
+        Console.WriteLine($"{"RSVP email:".PadRight(labelWidth)} {_RSVPemail}");
+        Console.WriteLine($"{"Event Capacity:".PadRight(labelWidth)} {_capacity}");
+        Console.WriteLine($"{"Dress Code:".PadRight(labelWidth)} {_dressCode}");
+        Console.WriteLine($"{"Where:".PadRight(labelWidth)} {_address.GetAddressInfo()}");
+        Console.WriteLine($"{"When:".PadRight(labelWidth)} {DisplayDateTime()}");   
+        Console.WriteLine($"{"Description:".PadRight(labelWidth)} {_description}");
+ }
     public void DisplayShortDetails()
     {
-        
+        int labelWidth = 25; 
+
+        Console.WriteLine($"{"Reception:".PadRight(labelWidth)} {_eventTitle}");
+        Console.WriteLine($"{"When:".PadRight(labelWidth)} {DisplayDateTime()}");
     }
 }
